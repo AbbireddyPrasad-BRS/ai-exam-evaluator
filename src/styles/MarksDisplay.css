@@ -1,0 +1,147 @@
+/* Base Layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #66fcf1;
+  min-height: 100vh;
+}
+
+/* Container */
+.marks-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: rgba(11, 12, 16, 0.95);
+  border: 2px solid #66fcf1;
+  border-radius: 16px;
+  box-shadow: 0 0 30px #0044ff;
+  animation: fadeIn 1s ease-in-out;
+  text-align: center;
+}
+
+/* Header */
+.marks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.marks-header h2 {
+  color: #ffffff;
+  text-shadow: 0 0 8px #45a29e;
+}
+
+.account-btn {
+  padding: 10px 20px;
+  border: 2px solid #66fcf1;
+  background-color: transparent;
+  color: #66fcf1;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  margin-right: 10px; /* new line added */
+}
+.account-btn:hover {
+  background-color: #66fcf1;
+  color: #0b0c10;
+  box-shadow: 0 0 12px #0015ff;
+}
+
+/* Student Info */
+.student-info {
+  text-align: left;
+  margin-bottom: 30px;
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #66fcf1;
+  box-shadow: 0 0 10px rgb(0, 50, 248);
+}
+
+/* Table */
+.marks-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px #0011ff;
+}
+
+.marks-table th,
+.marks-table td {
+  border: 1px solid #66fcf1;
+  padding: 12px;
+  color: #ffffff;
+  text-shadow: 0 0 3px #45a29e;
+}
+
+.marks-table th {
+  background-color: #1f2833;
+}
+
+.marks-table .ai-mark {
+  color: #00ffcc;
+  font-weight: bold;
+  text-shadow: 0 0 6px #00ffcc;
+}
+
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #ff0066;
+}
+
+/* Result Summary */
+.result-summary {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(11, 22, 33, 0.7);
+  border-radius: 10px;
+  border: 2px solid #66fcf1;
+  box-shadow: 0 0 12px #0026ff;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.result-summary p {
+  margin: 10px 0;
+  text-shadow: 0 0 4px #45a29e;
+}
+
+/* Back Button */
+.back-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: #66fcf1;
+  border: 2px solid #66fcf1;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 8px #66fcf1;
+  transition: all 0.3s ease-in-out;
+}
+
+.back-btn:hover {
+  background-color: #00ff48;
+  color: #0b0c10;
+  box-shadow: 0 0 16px #0000bf;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

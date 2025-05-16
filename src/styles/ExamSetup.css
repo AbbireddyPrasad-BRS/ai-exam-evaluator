@@ -1,0 +1,142 @@
+/* ExamSetup.css */
+
+.examsetup-container {
+  background-color: #0f0f1a;
+  color: #00fff7;
+  padding: 40px;
+  max-width: 700px;
+  margin: auto;
+  border: 2px solid #03ddff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00e1ff, 0 0 40px #0048ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.examsetup-container h2 {
+  text-align: center;
+  color: #00d5ff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00fff7;
+}
+
+.main-heading {
+  text-align: center;
+  font-size: 2rem;
+  color: #00eaff;
+  margin-bottom: 30px;
+  text-shadow: 0 0 8px rgb(27, 18, 200), 0 0 16px rgb(44, 57, 237);
+  animation: fadeInDown 1s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.examsetup-container label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #f0f0f0;
+}
+
+.examsetup-container input {
+  width: 100%;
+  padding: 10px;
+  background: #1a1a2e;
+  border: 1px solid #00fff7;
+  border-radius: 6px;
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.examsetup-container h2 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.examsetup-container p {
+  padding-bottom: 14px;
+  font-size: 12px;
+  text-align: left;
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+/* Remove number input spinners for Chrome, Safari, Edge */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.question-block {
+  border: 1px solid #00ddff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #1a1a2e;
+}
+
+button {
+  background-color: #00ffff;
+  color: black;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 20px auto 0;
+}
+
+button:hover {
+  background-color: #00ff1e;
+  color: black;
+  box-shadow: 0 0 10px #00e1ff, 0 0 20px #0011ff;
+}
+
+.error-message {
+  color: #ff4d4d;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.form-group label {
+  font-style: bold;
+  color: #00fff7;
+  text-align: left;
+  
+}
+.upload-header {
+  font-size: 1.5rem;
+  color: #00fff7;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  padding-top: 20px;
+  top: 2px; 
+}
+.account-button{
+  background-color: #00fff7;
+  color: #0f0f1a;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute ;
+  bottom: 5px;
+  right: 2px;
+
+}
+.account-button:hover {
+  background-color: #00ff2a;
+  color: #0f0f1a;
+  box-shadow: 0 0 10px #002efdfd;
+}

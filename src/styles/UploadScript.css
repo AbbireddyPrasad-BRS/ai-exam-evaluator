@@ -1,0 +1,204 @@
+.upload-container {
+  background-color: #0f0f1a;
+  color: #00fff7;
+  padding: 40px;
+  max-width: 800px;
+  margin: 150px auto 0 auto; /* top margin added */
+  border: 2px solid #00ddff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #0088ff, 0 0 40px #00fff7;
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+}
+
+/* roll number and name*/
+/* Shared styles for both input sections */
+.student-roll-number,
+.student-name {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem auto;
+  width: 100%;
+  max-width: 400px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Label styles */
+.student-roll-number label,
+.student-name label {
+  color: #00ffe7;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px #00ffe7, 0 0 10px #00ffe7;
+}
+
+/* Input field styles */
+.student-roll-number input,
+.student-name input {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  color: #00ffe7;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid #00ffe7;
+  border-radius: 10px;
+  box-shadow: 0 0 12px #00ffe7;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Focus effect */
+.student-roll-number input:focus,
+.student-name input:focus {
+  border-color: #ccff00;
+  box-shadow: 0 0 15px #d4ff00;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+
+
+/* Navigation Buttons Header */
+.upload-header {
+  position: relative;
+  height: 0; /* avoids affecting layout */
+}
+
+/* Back Button at Top-Left */
+.back-button {
+  position: absolute;
+  /* top: 20px; */
+  bottom: 9px;
+  left: 20px;
+  background-color: transparent;
+  color: rgb(0, 221, 255);
+  padding: 10px 20px;
+  border: 1px solid #00fff7;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Account Button at Top-Right */
+.account-button {
+  position: absolute;
+  /* top: 20px; */
+  bottom: 10px;
+  right: 20px;
+  background-color: transparent;
+  border: 1px solid #00fff7;
+  color: #00fff7;
+  font-weight: bold;
+  padding: 10px 20px;
+  /* padding-top: 10px; */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effects for both */
+.back-button:hover,
+.account-button:hover {
+  background-color: #00ffd9;
+  color: #0f0f1a;
+  box-shadow: 0 0 10px #0022ff;
+}
+
+.upload-title {
+  text-align: center;
+  font-size: 28px;
+  color: #00b3ff;
+  text-shadow: 0 0 10px #0953ff;
+  margin-bottom: 20px;
+}
+
+.dropzone {
+  border: 2px dashed #00fff7;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #1a1a2e;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.dropzone.dragging {
+  background-color: #1e1e3f;
+  box-shadow: 0 0 20px #ff8c00;
+}
+
+.dropzone.active {
+  border-color: #00ff11;
+  box-shadow: 0 0 30px #00ff15;
+}
+
+.dropzone p {
+  margin: 0;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.cancel,
+.view,
+.submit {
+  background-color: #00eaff;
+  color: black;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel:hover{
+  background-color: #ab0808;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px #00fff7, 0 0 20px #002aff;
+}
+.view:hover{
+  background-color: #e5ff00;
+  color: black;
+  box-shadow: 0 0 10px #00fff7, 0 0 20px #002fff;
+}
+.submit:hover {
+  background-color: #00ff2a;
+  color: black;
+  box-shadow: 0 0 10px #00fff7, 0 0 20px #0011ff;
+}
+
+.popup-alert {
+  background-color: #00ff88;
+  color: black;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  animation: popupFade 1.5s ease-in-out;
+  margin-top: 15px;
+}
+
+@keyframes popupFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
