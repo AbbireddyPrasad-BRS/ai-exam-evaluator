@@ -13,6 +13,8 @@ const UploadScript = () => {
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
   const { examData, setExamData } = useContext(ExamContext);
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -50,44 +52,91 @@ const UploadScript = () => {
     }
   };
 
-  const handleSubmit = () => {
-    if (!rollNumber || !studentName) {
-      alert('Please enter Roll Number and Student Name.');
-      return;
-    }
+  const handleSubmit = async () => {
+    // Clear previous roll number and student name from localStorage
+    localStorage.removeItem('studentRollNumber');
+    localStorage.removeItem('studentName');
+  // Validate roll number and student name
+  if (!rollNumber || !studentName) {
+    alert('Please enter Roll Number and Student Name.');
+    return;
+  }
 
-    if (uploadedFile) {
-      setExamData(prev => ({
-        ...prev,
-        rollNumber,
-        studentName,
-      }));
+  if (uploadedFile) {
+    const formData = new FormData();
+    formData.append('pdf', uploadedFile);
+    formData.append('rollNumber', rollNumber);
+    formData.append('studentName', studentName);
+    formData.append('examId', examData.examId); // ✅ add this if missing
 
-      setShowPopup(true);
-      setTimeout(() => {
-        setShowPopup(false);
-        navigate(`/marks/${rollNumber}`);
-      }, 1500);
-    } else {
-      alert('Please upload a file before submitting.');
+
+    try {
+      const response = await fetch('https://ai-paper-api.onrender.com/api/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+       setExamData(prev => {
+            const newExamData = {
+              ...prev,
+              rollNumber,
+              studentName,
+              examId: prev.examId,
+              questions: prev.questions
+            };
+
+            // ✅ Store in localStorage *inside the callback*
+            localStorage.setItem('studentRollNumber', rollNumber);
+            localStorage.setItem('studentName', studentName);
+            localStorage.setItem('examId', newExamData.examId);
+            localStorage.setItem('questions', JSON.stringify(newExamData.questions));
+
+            return newExamData;
+          });
+        // Show success popup
+        setShowPopup(true);
+        setTimeout(() => {
+          setShowPopup(false);
+          navigate(`/marks/${rollNumber}`);
+        }, 1500);
+      } else {
+        alert('Upload failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      alert('An error occurred during upload.');
     }
-  };
+  } else {
+    alert('Please upload a file before submitting.');
+  }
+};
 
   return (
     <div className="upload-container">
-      <div className="upload-header">
-        <button className="back-button" onClick={() => navigate('/examsetup')}>
-          ⬅ Go Back
-        </button>
-        <button className="account-button" onClick={() => navigate('/account')}>
-          👤 Account
-        </button>
-      </div>
+      <header className="landing-header">
+  <h1 className="logo" onClick={() => navigate('/')}>AI Exam Evaluation</h1>
 
-      <h1 className="main-heading">AI Based Exam Paper Evaluation System</h1>
+  <div className="menu-icon" onClick={() => setMenuOpen(prev => !prev)}>
+    <div className="bar" />
+    <div className="bar" />
+    <div className="bar" />
+  </div>
+
+  <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
+    <ul>
+      <li onClick={() => navigate('/')}>Home</li>
+      <li onClick={() => navigate('/examsetup')}>Set-Exam</li>
+      <li onClick={() => navigate('/account')}>Account</li>
+    </ul>
+  </nav>
+</header>
+
+      <h1 className="main-heading">WELCOME TO ANSWERS UPLOAD PAGE</h1>
+      <h2 className="sub-heading">Please enter the details & upload the answer script.</h2>
 
       <div className="student-roll-number">
-        <label>Student Roll Number:</label>
+        <label>Student Roll Number</label>
         <input
           type="text"
           value={rollNumber}
@@ -97,7 +146,7 @@ const UploadScript = () => {
       </div>
 
       <div className="student-name">
-        <label>Student Name:</label>
+        <label>Student Name</label>
         <input
           type="text"
           value={studentName}
@@ -106,7 +155,7 @@ const UploadScript = () => {
         />
       </div>
 
-      <h2 className="upload-title">Upload Answer Script</h2>
+      <h2 className="upload-title">Upload Student Answer File</h2>
 
       <div
         className={`dropzone ${isDragging ? 'dragging' : ''} ${uploadedFile ? 'active' : ''}`}

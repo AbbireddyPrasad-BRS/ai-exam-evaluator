@@ -1,204 +1,320 @@
+/* Background & Layout */
 .upload-container {
-  background-color: #0f0f1a;
-  color: #00fff7;
-  padding: 40px;
-  max-width: 800px;
-  margin: 150px auto 0 auto; /* top margin added */
-  border: 2px solid #00ddff;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #0088ff, 0 0 40px #00fff7;
-  font-family: 'Orbitron', sans-serif;
-  position: relative;
-}
-
-/* roll number and name*/
-/* Shared styles for both input sections */
-.student-roll-number,
-.student-name {
+  background: url('/public/images/bg-upload.jpg') center/cover no-repeat,
+              linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 40px;
+  animation: backgroundPulse 20s ease-in-out infinite;
   display: flex;
   flex-direction: column;
-  margin: 1.5rem auto;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #00ffe1;
+  background-blend-mode: multiply;
+}
+
+/* Shared Header */
+.landing-header {
+  position: fixed;
+  top: 0;
   width: 100%;
-  max-width: 400px;
-  font-family: 'Orbitron', sans-serif;
+  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Label styles */
-.student-roll-number label,
-.student-name label {
-  color: #00ffe7;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 5px #00ffe7, 0 0 10px #00ffe7;
-}
-
-/* Input field styles */
-.student-roll-number input,
-.student-name input {
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  color: #00ffe7;
-  background-color: rgba(0, 0, 0, 0.75);
-  border: 2px solid #00ffe7;
-  border-radius: 10px;
-  box-shadow: 0 0 12px #00ffe7;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-/* Focus effect */
-.student-roll-number input:focus,
-.student-name input:focus {
-  border-color: #ccff00;
-  box-shadow: 0 0 15px #d4ff00;
-  background-color: rgba(0, 0, 0, 0.85);
-}
-
-
-
-/* Navigation Buttons Header */
-.upload-header {
-  position: relative;
-  height: 0; /* avoids affecting layout */
-}
-
-/* Back Button at Top-Left */
-.back-button {
-  position: absolute;
-  /* top: 20px; */
-  bottom: 9px;
-  left: 20px;
-  background-color: transparent;
-  color: rgb(0, 221, 255);
-  padding: 10px 20px;
-  border: 1px solid #00fff7;
-  border-radius: 6px;
+.logo {
+  color: #fff;
   font-weight: bold;
+  font-size: 1.6rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #00f0ff;
+  animation: fadeInDown 1s ease;
 }
 
-/* Account Button at Top-Right */
-.account-button {
-  position: absolute;
-  /* top: 20px; */
-  bottom: 10px;
-  right: 20px;
-  background-color: transparent;
-  border: 1px solid #00fff7;
-  color: #00fff7;
-  font-weight: bold;
-  padding: 10px 20px;
-  /* padding-top: 10px; */
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  animation: fadeInDown 1s ease;
 }
 
-/* Hover effects for both */
-.back-button:hover,
-.account-button:hover {
-  background-color: #00ffd9;
-  color: #0f0f1a;
-  box-shadow: 0 0 10px #0022ff;
+.nav-links ul li {
+  cursor: pointer;
+  font-weight: 600;
+  color: #00bfff;
+  transition: color 0.3s ease;
+}
+
+.nav-links ul li:hover {
+  color: #ffa500;
+  text-shadow: 0 0 8px #00fff7;
+}
+
+.menu-icon {
+  display: none;
+}
+
+/* Heading Styles */
+.main-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-shadow: 0 0 8px #0077ff;
+  animation: fadeInUp 1s ease;
+}
+h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  color: #002fff;
+  text-shadow: 0 0 8px #000000;
+  text-transform:capitalize;
 }
 
 .upload-title {
-  text-align: center;
-  font-size: 28px;
-  color: #00b3ff;
-  text-shadow: 0 0 10px #0953ff;
+  font-size: 1.3rem;
+  color: #00d9ff;
+  text-shadow: 0 0 5px #00aaff;
+  margin-top: 30px;
   margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
 }
 
+/* Form Fields */
+.student-roll-number,
+.student-name {
+  width: 90%;
+  max-width: 500px;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.student-roll-number label,
+.student-name label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: inset 0 0 6px rgba(0, 191, 255, 0.4);
+  outline: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Glow Effect on Focus */
+input[type="text"]:focus {
+  box-shadow: 0 0 10px #00ffd0;
+  outline: none;
+}
+
+/* Dropzone */
 .dropzone {
-  border: 2px dashed #00fff7;
-  padding: 40px;
+  width: 90%;
+  max-width: 600px;
+  height: 150px;
+  border: 2px dashed #00ffff;
   border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00d9ff;
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
   text-align: center;
   margin-bottom: 20px;
-  background-color: #1a1a2e;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease-in-out;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .dropzone.dragging {
-  background-color: #1e1e3f;
-  box-shadow: 0 0 20px #ff8c00;
+  border-color: #ddff00;
+  background-color: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 12px #ccff00;
 }
 
 .dropzone.active {
-  border-color: #00ff11;
-  box-shadow: 0 0 30px #00ff15;
-}
-
-.dropzone p {
-  margin: 0;
-  font-size: 16px;
-  color: #ccc;
+  border-color: #00ff15;
+  box-shadow: 0 0 12px #00ff2a;
 }
 
 .file-input {
   display: none;
 }
 
+/* File Controls */
 .file-controls {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  gap: 15px;
   margin-bottom: 20px;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
-.cancel,
-.view,
-.submit {
-  background-color: #00eaff;
-  color: black;
-  padding: 10px 22px;
+.file-controls button {
+  padding: 10px 16px;
   border: none;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-.cancel:hover{
-  background-color: #ab0808;
+.cancel {
+  background-color: #ff00001f;
+  color: white;
+  box-shadow: 0 0 10px #ff4444;
+  margin-right: 10px;
+}
+
+.cancel:hover {
+  background-color: #ff0000;
   color: rgb(255, 255, 255);
-  box-shadow: 0 0 10px #00fff7, 0 0 20px #002aff;
-}
-.view:hover{
-  background-color: #e5ff00;
-  color: black;
-  box-shadow: 0 0 10px #00fff7, 0 0 20px #002fff;
-}
-.submit:hover {
-  background-color: #00ff2a;
-  color: black;
-  box-shadow: 0 0 10px #00fff7, 0 0 20px #0011ff;
+  box-shadow: 0 0 10px #ff4444;
 }
 
-.popup-alert {
-  background-color: #00ff88;
-  color: black;
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
+.view {
+  background-color: #00fbff1d;
+  margin-left: 20px;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px #00bfff;
+}
+
+.view:hover {
+  background-color: #0099cc;
+  box-shadow: 0 0 10px #00bfff;
+}
+
+/* Submit Button */
+.submit {
+  background-color: #027e06;
+  color: white;
   font-weight: bold;
-  animation: popupFade 1.5s ease-in-out;
-  margin-top: 15px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
-@keyframes popupFade {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
+.submit:hover {
+  background-color: #00ff00;
+  box-shadow: 0 0 10px #80ff00;
+}
+
+/* Popup Alert */
+.popup-alert {
+  margin-top: 10px;
+  color: #00ff88;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes backgroundPulse {
+  0%, 100% {
+    background-position: center;
   }
   50% {
-    opacity: 1;
-    transform: scale(1.05);
+    background-position: top center;
   }
-  100% {
+}
+
+@keyframes fadeInUp {
+  from {
     opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
     transform: scale(1);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 12px 0 0 12px;
+    padding: 1rem 2rem;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    flex-direction: column;
+    z-index: 1000;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: right;
+  }
+
+  .nav-links ul li {
+    font-size: 1.1rem;
   }
 }

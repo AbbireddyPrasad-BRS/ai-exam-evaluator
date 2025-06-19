@@ -1,28 +1,33 @@
 // App.js
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ExamSetup from './pages/ExamSetup';
 import UploadScript from './pages/UploadScript';
 import MarksDisplay from './pages/MarksDisplay';
 import AccountPage from './pages/AccountPage';
-import './App.css';
+import PrivateRoute from './components/PrivateRoute';
+import LandingPage from './pages/LandingPage'; // ✅ NEW
 
-import { ExamProvider } from './context/ExamContext'; // <-- import context
+import './App.css';
+import { ExamProvider } from './context/ExamContext';
 
 function App() {
   return (
     <ExamProvider>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
+          {/* ✅ Show Landing Page at root */}
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/examsetup" element={<ExamSetup />} />
-          <Route path="/uploadscript" element={<UploadScript />} />
-          <Route path="/marks/:rollNo" element={<MarksDisplay />} />
-          <Route path="/account" element={<AccountPage />} />
+
+          {/* ✅ Protected Routes */}
+          <Route path="/examsetup" element={<PrivateRoute><ExamSetup /></PrivateRoute>} />
+          <Route path="/uploadscript" element={<PrivateRoute><UploadScript /></PrivateRoute>} />
+          <Route path="/marks/:rollNo" element={<PrivateRoute><MarksDisplay /></PrivateRoute>} />
+          <Route path="/account" element={<PrivateRoute><AccountPage /></PrivateRoute>} />
         </Routes>
       </div>
     </ExamProvider>
