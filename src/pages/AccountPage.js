@@ -23,7 +23,7 @@ const AccountPage = () => {
     const nameFromEmail = email.split('@')[0].replace('.', ' ');
     setFacultyName(nameFromEmail.charAt(0).toUpperCase() + nameFromEmail.slice(1));
 
-    fetch(`https://ai-paper-api.onrender.com/api/answers/history/by-faculty?facultyEmail=${email}`)
+    fetch(`https://abbireddy-paper-evaluator-backend.onrender.com/api/answers/history/by-faculty?facultyEmail=${email}`)
       .then((res) => res.json())
       .then((data) => setUploads(data.uploads || []))
       .catch((err) => console.error('Error fetching uploads:', err));

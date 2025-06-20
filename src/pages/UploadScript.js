@@ -71,7 +71,7 @@ const UploadScript = () => {
 
 
     try {
-      const response = await fetch('https://ai-paper-api.onrender.com/api/upload', {
+      const response = await fetch('https://abbireddy-paper-evaluator-backend.onrender.com/api/upload', {
         method: 'POST',
         body: formData
       });

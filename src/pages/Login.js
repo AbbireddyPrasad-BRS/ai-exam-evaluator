@@ -25,7 +25,7 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const response = await fetch('https://ai-paper-api.onrender.com/api/auth/login', {
+      const response = await fetch('https://abbireddy-paper-evaluator-backend.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

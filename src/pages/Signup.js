@@ -35,7 +35,7 @@ const Signup = () => {
 
     setLoading(true);
     try {
-      const response = await fetch('https://ai-paper-api.onrender.com/api/auth/signup', {
+      const response = await fetch('https://abbireddy-paper-evaluator-backend.onrender.com/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

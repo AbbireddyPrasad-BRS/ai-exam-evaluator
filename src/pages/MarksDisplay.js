@@ -43,7 +43,7 @@ useEffect(() => {
   const fetchEvaluation = async () => {
     try {
       setIsLoading(true);
-      const res = await fetch('https://ai-paper-api.onrender.com/api/evaluate', {
+      const res = await fetch('https://abbireddy-paper-evaluator-backend.onrender.com/api/evaluate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

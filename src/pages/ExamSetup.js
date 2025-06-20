@@ -83,7 +83,7 @@ const ExamSetup = () => {
     try {
       setLoading(true);
 
-      const res = await fetch('https://ai-paper-api.onrender.com/api/exam/create', {
+      const res = await fetch('https://abbireddy-paper-evaluator-backend.onrender.com/api/exam/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
