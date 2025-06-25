@@ -1,6 +1,6 @@
 // src/pages/MarksDisplay.js
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ExamContext } from '../context/ExamContext';
 import '../styles/MarksDisplay.css';
 
@@ -14,6 +14,7 @@ const MarksDisplay = () => {
   const [error, setError] = useState('');
 const { examData, setExamData } = useContext(ExamContext);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { rollNo } = useParams(); // <-- this is from URL
 
   useEffect(() => {
   if (
@@ -30,7 +31,7 @@ const { examData, setExamData } = useContext(ExamContext);
     if (storedRoll && storedName && storedExamId && storedQuestions) {
       setExamData(prev => ({
         ...prev,
-        rollNumber: storedRoll,
+        rollNumber: rollNo,
         studentName: storedName,
         examId: storedExamId,
         questions: JSON.parse(storedQuestions)
